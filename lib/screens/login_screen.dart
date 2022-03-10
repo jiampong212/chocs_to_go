@@ -1,3 +1,5 @@
+import 'package:chocs_to_go/constants.dart';
+import 'package:chocs_to_go/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,9 +37,9 @@ class LoginScreen extends StatelessWidget {
               Text(
                 'CHOCS TO GO',
                 style: GoogleFonts.exo2(
-                  textStyle: const TextStyle(
+                  textStyle: TextStyle(
                     fontSize: 150,
-                    color: Color.fromARGB(255, 219, 192, 172),
+                    color: customAccentColor,
                   ),
                 ),
               ),
@@ -71,14 +73,29 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextField(
                       style: const TextStyle(color: Colors.white),
-                      cursorColor: Colors.blue,
+                      cursorColor: Colors.white,
                       // autofocus: true,
                       controller: _userNamecontroller,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        contentPadding: EdgeInsets.all(8.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12.0),
+                          ),
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12.0),
+                          ),
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12.0),
+                          ),
+                        ),
                         isDense: true,
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                        contentPadding: EdgeInsets.all(8.0),
                       ),
                     ),
                     const SizedBox(
@@ -95,17 +112,32 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextField(
                       style: const TextStyle(color: Colors.white),
-                      cursorColor: Colors.blue,
+                      cursorColor: Colors.white,
                       onSubmitted: (value) {
                         enter(context);
                       },
                       obscureText: true,
                       controller: _passwordcontroller,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        contentPadding: EdgeInsets.all(8.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12.0),
+                          ),
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12.0),
+                          ),
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12.0),
+                          ),
+                        ),
                         isDense: true,
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                        contentPadding: EdgeInsets.all(8.0),
                       ),
                     ),
                     const SizedBox(
@@ -114,10 +146,19 @@ class LoginScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: customButtonShape,
+                          primary: customAccentColor,
+                        ),
                         onPressed: () {
                           enter(context);
                         },
-                        child: const Text('Log in'),
+                        child: Text(
+                          'Log in',
+                          style: TextStyle(
+                            color: customButtonTextColor,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -145,7 +186,7 @@ class LoginScreen extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return Container();
+          return const HomeScreen();
         },
       ),
     );
