@@ -5,7 +5,11 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:intl/intl.dart';
 
-enum ChocolateFlavorsEnum { White, Dark, Milk }
+enum ChocolateFlavorsEnum {
+  White,
+  Dark,
+  Milk,
+}
 
 enum TableFieldsEnum {
   product_id,
@@ -14,7 +18,6 @@ enum TableFieldsEnum {
   quantity,
   price,
   flavor,
-  expiry_date,
   last_date_release,
   last_date_receive,
 }

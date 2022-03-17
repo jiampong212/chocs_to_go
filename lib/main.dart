@@ -1,9 +1,11 @@
+import 'package:chocs_to_go/constants.dart';
 import 'package:chocs_to_go/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const ChocsToGo());
+  runApp(const ProviderScope(child: ChocsToGo()));
 }
 
 class ChocsToGo extends StatelessWidget {
@@ -14,7 +16,7 @@ class ChocsToGo extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       themeMode: ThemeMode.dark,
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData.dark().copyWith(dividerColor: customButtonTextColor),
       debugShowCheckedModeBanner: false,
       home: const LoginScreen(),
       builder: EasyLoading.init(),

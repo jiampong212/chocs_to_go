@@ -21,12 +21,11 @@ class DatabaseAPI {
       Iterable results = await conn.query(
         '''SELECT 
         `${TableFieldsEnum.product_id.name}`,
-        `${TableFieldsEnum.product_name.name}`.
+        `${TableFieldsEnum.product_name.name}`,
         `${TableFieldsEnum.net_weight.name}`, 
         `${TableFieldsEnum.quantity.name}`,
         `${TableFieldsEnum.price.name}`, 
         `${TableFieldsEnum.flavor.name}`, 
-        `${TableFieldsEnum.quantity.name}`,
         `${TableFieldsEnum.last_date_release.name}`,
         `${TableFieldsEnum.last_date_receive.name}`
         FROM `$tableName` WHERE 1''',
@@ -35,6 +34,7 @@ class DatabaseAPI {
       await conn.close();
 
       EasyLoading.dismiss();
+
 
       return results;
     } catch (e) {
@@ -51,7 +51,6 @@ class DatabaseAPI {
     required int quantity,
     required double price,
     required String flavor,
-    required DateTime expiryDate,
   }) async {
     EasyLoading.show();
 
@@ -64,16 +63,15 @@ class DatabaseAPI {
       await conn.query(
         '''INSERT INTO `$tableName` (
         `${TableFieldsEnum.product_id.name}`,
-        `${TableFieldsEnum.product_name.name}`.
+        `${TableFieldsEnum.product_name.name}`,
         `${TableFieldsEnum.net_weight.name}`, 
         `${TableFieldsEnum.quantity.name}`,
         `${TableFieldsEnum.price.name}`, 
         `${TableFieldsEnum.flavor.name}`, 
-        `${TableFieldsEnum.quantity.name}`,
         `${TableFieldsEnum.last_date_release.name}`,
         `${TableFieldsEnum.last_date_receive.name}`
           ) 
-          VALUES (?,?,?,?,?,?,?,?,?)''',
+          VALUES (?,?,?,?,?,?,?,?)''',
         [
           productID,
           productName,
@@ -81,7 +79,6 @@ class DatabaseAPI {
           quantity,
           price,
           flavor,
-          expiryDate,
           _lastDateRelease,
           _lastDateReceive,
         ],
@@ -97,18 +94,15 @@ class DatabaseAPI {
   Future addChocolates({
     required int quantity,
     required String productID,
-    required DateTime expiryDate,
   }) async {
     EasyLoading.show();
 
     try {
       MySqlConnection conn = await MySqlConnection.connect(settings);
 
-      await conn.query(
-          'UPDATE `$tableName` SET `quantity`=?, `${TableFieldsEnum.last_date_receive.name}`=?, `${TableFieldsEnum.expiry_date.name}`=? WHERE `product_id`=?', [
+      await conn.query('UPDATE `$tableName` SET `quantity`=?, `${TableFieldsEnum.last_date_receive.name}`=? WHERE `product_id`=?', [
         quantity,
         DateTime.now().toUtc(),
-        expiryDate,
         productID,
       ]);
 
@@ -127,7 +121,6 @@ class DatabaseAPI {
 
     try {
       MySqlConnection conn = await MySqlConnection.connect(settings);
-
 
       await conn.query('UPDATE `$tableName` SET `${TableFieldsEnum.last_date_release.name}`=? , `quantity`=? WHERE `product_id` = ?', [
         DateTime.now().toUtc(),

@@ -38,6 +38,7 @@ dependencies:
   flutter_easyloading: ^3.0.3
   mysql1: ^0.19.2
   intl: ^0.17.0
+  flutter_riverpod: ^1.0.3
 
 dev_dependencies:
   flutter_test:
