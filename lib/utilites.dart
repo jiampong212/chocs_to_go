@@ -9,6 +9,8 @@ enum ChocolateFlavorsEnum {
   White,
   Dark,
   Milk,
+  PeanutButter,
+  Caramel,
 }
 
 enum TableFieldsEnum {

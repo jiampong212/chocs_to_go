@@ -63,7 +63,7 @@ class ChocolatesProvider extends StateNotifier<List<Chocolates>> {
   }
 
   clearSearch(WidgetRef ref) {
-    state = _fullList;
+    state = _fullList.toList();
     _resetSelectedRow(ref);
   }
 }

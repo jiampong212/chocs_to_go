@@ -15,6 +15,9 @@ class HomeScreen extends ConsumerWidget {
 
   final double _tableHeaderFontSize = 14;
   static final TextEditingController _searchController = TextEditingController();
+  static final ScrollController _tableController = ScrollController();
+  static final ScrollController _listController = ScrollController();
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -63,6 +66,7 @@ class HomeScreen extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Expanded(
                           flex: 15,
@@ -75,6 +79,7 @@ class HomeScreen extends ConsumerWidget {
                               ),
                             ),
                             child: SingleChildScrollView(
+                              controller: _tableController,
                               child: DataTable(
                                 showCheckboxColumn: false,
                                 showBottomBorder: true,
@@ -187,6 +192,7 @@ class HomeScreen extends ConsumerWidget {
                                 return SizedBox(
                                   height: 500,
                                   child: ListView.builder(
+                                    controller: _listController,
                                     itemCount: _lowQuantity.length,
                                     itemBuilder: (context, index) {
                                       int _quantityLeft = _lowQuantity[index].quantity;
