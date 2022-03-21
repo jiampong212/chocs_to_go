@@ -391,7 +391,7 @@ class HomeScreen extends ConsumerWidget {
                                   onPressed: () async {
                                     String productID = ref.read(selectedProductProvider).productID;
 
-                                    await DatabaseAPI().deleteProduct(productID);
+                                    await DatabaseAPI(settings: ref.read(mysqlConnectionProvider)).deleteProduct(productID);
                                     await ref.read(chocolatesProvider.notifier).reset(ref);
 
                                     Navigator.pop(context);

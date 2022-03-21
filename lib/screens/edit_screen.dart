@@ -109,7 +109,7 @@ class EditScreen extends ConsumerWidget {
                           return;
                         }
 
-                        await DatabaseAPI().editPrice(
+                        await DatabaseAPI(settings: ref.read(mysqlConnectionProvider)).editPrice(
                           price: double.parse(_priceController.text),
                           productID: ref.read(selectedProductProvider).productID,
                         );

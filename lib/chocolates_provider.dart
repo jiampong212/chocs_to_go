@@ -9,7 +9,7 @@ class ChocolatesProvider extends StateNotifier<List<Chocolates>> {
   List<Chocolates> _fullList = [];
 
   Future init(WidgetRef ref) async {
-    await DatabaseAPI().queryTable().then(
+    await DatabaseAPI(settings: ref.read(mysqlConnectionProvider)).queryTable().then(
       (value) {
         List<Chocolates> _temp = [];
 

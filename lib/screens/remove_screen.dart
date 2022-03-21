@@ -150,7 +150,7 @@ class RemoveScreen extends ConsumerWidget {
                         int _originalQuantity = _chocolates.quantity;
                         int _removeQuantity = int.parse(_quantityController.text);
 
-                        await DatabaseAPI().removeChocolates(
+                        await DatabaseAPI(settings: ref.read(mysqlConnectionProvider)).removeChocolates(
                           quantity: _originalQuantity - _removeQuantity,
                           productID: _chocolates.productID,
                         );

@@ -102,7 +102,7 @@ class AddScreen extends ConsumerWidget {
                         int _originalQuantity = _chocolates.quantity;
                         int _addQuantity = int.parse(_quantityController.text);
 
-                        await DatabaseAPI().addChocolates(
+                        await DatabaseAPI(settings: ref.read(mysqlConnectionProvider)).addChocolates(
                           quantity: _addQuantity + _originalQuantity,
                           productID: _chocolates.productID,
                         );

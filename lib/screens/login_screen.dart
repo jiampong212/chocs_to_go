@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mysql1/mysql1.dart';
 
 final chocolatesProvider = StateNotifierProvider<ChocolatesProvider, List<Chocolates>>((ref) {
   return ChocolatesProvider();
@@ -13,6 +14,10 @@ final chocolatesProvider = StateNotifierProvider<ChocolatesProvider, List<Chocol
 
 final selectedProductProvider = StateProvider<Chocolates>((ref) {
   return Chocolates.empty();
+});
+
+final mysqlConnectionProvider = StateProvider<ConnectionSettings>((ref) {
+  return ConnectionSettings();
 });
 
 class LoginScreen extends ConsumerWidget {

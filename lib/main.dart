@@ -1,5 +1,5 @@
 import 'package:chocs_to_go/constants.dart';
-import 'package:chocs_to_go/screens/login_screen.dart';
+import 'package:chocs_to_go/screens/enter_mysql_settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,7 +18,7 @@ class ChocsToGo extends StatelessWidget {
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark().copyWith(dividerColor: customButtonTextColor),
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: const EnterMysqlSettingsPage(),
       builder: EasyLoading.init(),
     );
   }
