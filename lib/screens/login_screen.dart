@@ -198,7 +198,7 @@ class LoginScreen extends ConsumerWidget {
       return;
     }
 
-    ref.read(chocolatesProvider.notifier).init(ref);
+    await ref.read(chocolatesProvider.notifier).init(ref);
 
     Navigator.pushReplacement(
       context,
