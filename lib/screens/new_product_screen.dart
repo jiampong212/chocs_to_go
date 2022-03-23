@@ -345,7 +345,7 @@ class NewProductScreen extends ConsumerWidget {
                           flavor: _flavor,
                         );
 
-                        ref.read(chocolatesProvider.notifier).reset(ref);
+                        await ref.read(chocolatesProvider.notifier).reset(ref);
 
                         _clear();
 

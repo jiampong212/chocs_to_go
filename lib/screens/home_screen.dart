@@ -18,7 +18,6 @@ class HomeScreen extends ConsumerWidget {
   static final ScrollController _tableController = ScrollController();
   static final ScrollController _listController = ScrollController();
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -345,7 +344,7 @@ class HomeScreen extends ConsumerWidget {
                 PopupMenuButton<int>(
                   icon: const Icon(Icons.more_horiz),
                   color: customAccentColor,
-                  onSelected: (value) {
+                  onSelected: (value) async {
                     switch (value) {
                       case 0:
                         Navigator.push(
@@ -407,7 +406,7 @@ class HomeScreen extends ConsumerWidget {
                         );
                         break;
                       case 3:
-                        ref.watch(chocolatesProvider.notifier).reset(ref);
+                        await ref.watch(chocolatesProvider.notifier).reset(ref);
                         break;
                       default:
                         break;

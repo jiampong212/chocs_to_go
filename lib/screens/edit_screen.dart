@@ -114,7 +114,7 @@ class EditScreen extends ConsumerWidget {
                           productID: ref.read(selectedProductProvider).productID,
                         );
 
-                        ref.read(chocolatesProvider.notifier).reset(ref);
+                      await  ref.read(chocolatesProvider.notifier).reset(ref);
                         _clear();
                         Navigator.pop(context);
                       },

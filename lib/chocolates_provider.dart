@@ -38,8 +38,8 @@ class ChocolatesProvider extends StateNotifier<List<Chocolates>> {
   }
 
   Future reset(WidgetRef ref) async {
-    await init(ref);
     _fullList = [];
+    await init(ref);
   }
 
   _resetSelectedRow(WidgetRef ref) {

@@ -107,7 +107,7 @@ class AddScreen extends ConsumerWidget {
                           productID: _chocolates.productID,
                         );
 
-                        ref.read(chocolatesProvider.notifier).reset(ref);
+                        await ref.read(chocolatesProvider.notifier).reset(ref);
 
                         _clear();
                         Navigator.pop(context);
